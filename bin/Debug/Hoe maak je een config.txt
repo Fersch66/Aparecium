@@ -1,0 +1,17 @@
+Wat is de naam van de config:
+	De naam van de config is de naam van de website zonder enige extensies. Een voorbeeld is: "https://www.Github.com". De sitenaam is dan Github.
+
+Wat is de url van de config:
+	De url van de config is de url tot dat er een gebruikersnaam toegevoegd moet worden. Een voorbeeld is: "https://github.com/Test". De url is dan "https://github.com/".
+
+Wat is het woord/de zin waaruit blijkt dat de gebruikersnaam WEL bestaat:
+	Het woord/de zin waaruit blijkt dat de gebruikersnaam wel bestaat is het stukje tekst of een woord in de source code die alleen verschijnt wanneer een gebruikersnaam wel of niet bestaat.
+	Ga bijvoorbeeld naar "https://github.com/Test" en doe dan rechter muisknop "Paginabron weergeven". Zoek naar woorden die op de pagina staan. Hier is het bijvoorbeeld "Followers".
+
+Wat is het woord/de zin waaruit blijkt dat de gebruikersnaam NIET bestaat:
+	Ga naar een Facebook pagina die niet bestaat, bijvoorbeeld: "https://github.com/DLKFADS904328A", kijk in de source code en zoek naar een woord/zin die niet in de source code staat als het account wel bestaat. Hier is het bijvoorbeeld: "This is not the web page you are looking for"
+
+De config is klaar, helemaal door jou gemaakt! 
+
+Tips:
+Als het programma "Fout!" aangeeft tijdens het zoeken, betekend dat hij het woord wat bij "Geldig" of "Ongeldig" is ingevoerd niet kan vinden. De request staat in "Fout.txt" En dan moet je vanaf daar zoeken naar een woord wat Geldig of Ongeldig is.
