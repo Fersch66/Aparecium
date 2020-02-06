@@ -15,9 +15,10 @@ namespace Aparecium
             Console.Title = "Aparecium | Gemaakt door Frank";
             Console.Clear();
 
+
         vraag: try
             {
-Text(text: @"Welkom by Aparecium, een programma gemaakt door Frank.
+Text(text: @"Welkom bij Aparecium, een programma gemaakt door Frank.
                 Dit programma zoekt een gebruikersnaam over het hele internet.
                 Als je de gevolgen van OSINT weet, type 1. Weet je dit niet? Type 2.
 
@@ -68,6 +69,7 @@ Text(text: @"Welkom by Aparecium, een programma gemaakt door Frank.
                 Text(text: @"Kies een optie...
             1. Zoeker
             2. Config maken
+            3. Source verwerker
 
     Antwoord: ");
                 string antwoordVraag = Console.ReadLine();
@@ -81,6 +83,11 @@ Text(text: @"Welkom by Aparecium, een programma gemaakt door Frank.
                 {
                     Console.Clear();
                     configMaken();
+                }
+                else if (antwoordVraag == "3")
+                {
+                    Console.Clear();
+                    Requests();
                 }
                 else
                 {
@@ -258,6 +265,50 @@ Text(text: @"Welkom by Aparecium, een programma gemaakt door Frank.
 
 
         }
+
+        public static void Requests()
+        {
+            Console.Title = "Aparecium | Gemaakt door Frank | Source verwerker | ";
+            Text(text: "Wat is de url van de request: ");
+            string url = Console.ReadLine();
+            Console.Clear();
+
+            Text(text: "Hoe moet het bestand heten: ");
+            string domeinNaam = Console.ReadLine();
+            Console.Clear();
+
+            using (HttpRequest request = new HttpRequest())
+            {
+                request.IgnoreProtocolErrors = true;
+                request.AllowAutoRedirect = true;
+                request.AllowEmptyHeaderValues = true;
+                request.IgnoreInvalidCookie = true;
+                request.KeepAlive = true;
+
+                string get = request.Get(url).ToString();
+
+                using (StreamWriter writer = File.AppendText(@"Requests//" + domeinNaam + ".apa"))
+                {
+                    writer.WriteLine(get);
+                    writer.Flush();
+                    writer.Close();
+                }
+
+                Console.Clear();
+
+                Text(text: "Klaar! Klik op een knop om naar het hoofdmenu te gaan.");
+                Console.ReadKey();
+                ongeldigCnt = 0;
+                geldigCnt = 0;
+                Main();
+
+                System.Diagnostics.Process.Start(@"Requests//");
+
+
+
+            }
+        }
+
         static void Text(string text)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
